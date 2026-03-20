@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-slate-900 text-slate-200 font-sans antialiased;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-slate-800/60 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl;
+  }
+
+  .glass-input {
+    @apply w-full bg-slate-700/50 border border-white/10 text-white rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all;
+  }
+
+  .btn-primary {
+    @apply px-4 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-lg hover:from-blue-500 hover:to-purple-500 shadow-lg shadow-blue-500/25 transition-all focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-blue-500;
+  }
+
+  .btn-secondary {
+    @apply px-4 py-3 bg-slate-700 text-white font-medium rounded-lg hover:bg-slate-600 border border-white/5 transition-all focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-slate-500;
+  }
+}
+
+/* Custom Scrollbar for better dark UI */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0F172A;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
