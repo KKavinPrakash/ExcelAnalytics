@@ -7,6 +7,15 @@ const generateToken = (id) => {
     });
 };
 
+const getAllUser = async(req, res) => {
+    const users = await User.find()
+    if(users){
+        return res.status(200).json(users)
+    }else{
+        return res.status(400).json({message:"Error while fetching user data"})
+    }
+}
+
 const registerUser = async (req, res) => {
     const { name, email, password } = req.body;
 
@@ -60,4 +69,16 @@ const authUser = async (req, res) => {
     }
 };
 
-module.exports = { registerUser, authUser };
+const deleteUser = async(req, res) => {
+    const id = req.params.id
+    let user = User.findById(id)
+    if(user){
+        await User.findByIdAndDelete(id)
+        return res.status(200).json({message:"User deleted Successfully"})
+    }else{
+        return res.status(400).json({message:"User doesn't exist"})
+    }
+
+}
+
+module.exports = { getAllUser,registerUser, authUser, deleteUser };
