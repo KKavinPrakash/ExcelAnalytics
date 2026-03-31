@@ -25,11 +25,9 @@ if (!fs.existsSync(uploadsDir)) {
 }
 
 app.use('/api/auth', authRoutes);
+
 app.use('/api/data', dataRoutes);
 
-app.get('/', (req, res) => {
-    res.send('API is running...');
-});
 
 const PORT = process.env.PORT || 5001;
 

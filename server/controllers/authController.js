@@ -38,6 +38,7 @@ const registerUser = async (req, res) => {
     }
 };
 
+// Try bcrypt later for more security
 const authUser = async (req, res) => {
     const { email, password } = req.body;
 
