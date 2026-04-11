@@ -36,7 +36,7 @@ const Login = () => {
             >
                 <div className="text-center mb-8">
                     <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-accent-400">Welcome Back</h2>
-                    <p className="text-slate-400 mt-2">Sign in to continue to ExcelFlow</p>
+                    <p className="text-slate-400 mt-2">Sign in to continue to Excel Analytics Dashboard</p>
                 </div>
 
                 {error && (

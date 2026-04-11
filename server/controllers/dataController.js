@@ -7,7 +7,7 @@ const uploadDataset = async (req, res) => {
         if (!req.file) {
             return res.status(400).json({ message: 'Please upload a file' });
         }
-
+ 
         const workbook = xlsx.readFile(req.file.path);
         const sheetName = workbook.SheetNames[0];
         const sheet = workbook.Sheets[sheetName];
@@ -30,7 +30,7 @@ const uploadDataset = async (req, res) => {
 
             data.forEach(row => {
                 const val = row[col];
-                if (val !== undefined && val !== null && val !== '') {
+                if (val !== undefined && val !== null && val !== '') { //if value exist
                     count++;
                     if (typeof val === 'number') {
                         sum += val;
@@ -47,11 +47,11 @@ const uploadDataset = async (req, res) => {
                             isNumeric = false;
                         }
                     }
-                    freqMap[val] = (freqMap[val] || 0) + 1;
+                    freqMap[val] = (freqMap[val] || 0) + 1; // noraml strign male: 20 to store values like this
                 }
             });
 
-            if (isNumeric && count > 0) {
+            if (isNumeric && count > 0) { // if column is numeric and count > 0
                 analytics[col] = {
                     type: 'number',
                     sum,
@@ -59,7 +59,7 @@ const uploadDataset = async (req, res) => {
                     min,
                     max,
                 };
-            } else if (count > 0) {
+            } else if (count > 0) { // if it was string, sort by freuent and display
                 const sortedFreq = Object.entries(freqMap)
                     .sort((a, b) => b[1] - a[1])
                     .slice(0, 50)
@@ -75,7 +75,8 @@ const uploadDataset = async (req, res) => {
                 };
             }
         });
-
+        
+        //store analytics in db
         const dataset = await Dataset.create({
             user: req.user._id,
             filename: req.file.filename,

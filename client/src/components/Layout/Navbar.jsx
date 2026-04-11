@@ -19,7 +19,7 @@ const Navbar = () => {
                     <FiPieChart className="text-white text-xl" />
                 </div>
                 <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-accent-400">
-                    ExcelFlow
+                    Excel Analytics Dashboard
                 </span>
             </Link>
 
